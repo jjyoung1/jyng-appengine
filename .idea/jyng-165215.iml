@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="google-appengine-python" name="Google App Engine (Python)">
       <configuration>
-        <option name="rootFolder" value="C:\Users\joel\PycharmProjects\jyng-165215" />
+        <option name="rootFolder" value="D:\PyCharmProjects\jyng-appengine" />
         <option name="sdkFolder" value="C:\google-cloud-sdk\platform\google_appengine" />
         <option name="templatesFolder" value="" />
         <option name="oauth2" value="false" />
@@ -16,6 +16,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Google App Engine SDK" level="project" />
     <orderEntry type="library" name="Google App Engine SDK" level="project" />
   </component>
   <component name="TestRunnerService">
