@@ -20,7 +20,7 @@ import webapp2
 
 from handler import Handler
 from rot13 import Rot13Handler
-
+from user_signup import UserSignup
 
 class MainHandler(Handler):
     # def __init__(self):
@@ -33,5 +33,6 @@ class MainHandler(Handler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/rot13', Rot13Handler)
+    ('/rot13', Rot13Handler),
+    ('/signup', UserSignup)
 ], debug=True)
