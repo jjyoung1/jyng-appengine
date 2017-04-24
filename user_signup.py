@@ -72,7 +72,10 @@ class UserSignupHandler(Handler):
             return None
 
     def _validate_email(self, email):
-        return email
+        if UserSignupHandler.EMAIL_RE.match(email):
+            return email
+        else:
+            return None
 
 
 class WelcomeHandler(Handler):
