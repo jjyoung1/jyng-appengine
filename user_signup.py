@@ -1,18 +1,19 @@
-import webapp2
-import string
-import jinja2
 from handler import Handler
 
 
-class UserSignup(Handler):
-    def __init__(self):
-        self.ctx = {"username": "","password": "","verify": ""}
+class UserSignupHandler(Handler):
+    def _init_ctx(self):
+        ctx = {"username": "","password": "","verify": ""}
+        return ctx
 
     def get(self):
+        ctx = self._init_ctx();
         self.render('user_signup.html', ctx=ctx)
 
     def post(self):
-        self.ctx.username = self.request.get("username")
-        self.ctx.password = self.request.get("password")
-        self.ctx.verify = self.request.get("verify")
-        self.render('user_signup.html', ctx=self.ctx)
+        username = self.request.get("username")
+        password = self.request.get("password")
+        verify = self.request.get("verify")
+        self.render('user_signup.html', ctx={"username": username,
+                                             "password": password,
+                                             "verify": verify})

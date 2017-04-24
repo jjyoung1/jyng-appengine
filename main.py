@@ -14,25 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import os
-import jinja2
+# import os
+# import jinja2
 import webapp2
 
 from handler import Handler
 from rot13 import Rot13Handler
-from user_signup import UserSignup
-
-class MainHandler(Handler):
-    # def __init__(self):
-    #     super(MainHandler, self).__init__()
-    #     self.h = Handler()
-
-    def get(self):
-        self.render("index.html")
+from user_signup import UserSignupHandler
+from home import HomeHandler
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', HomeHandler),
     ('/rot13', Rot13Handler),
-    ('/signup', UserSignup)
+    ('/signup', UserSignupHandler)
 ], debug=True)

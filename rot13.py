@@ -1,18 +1,4 @@
-import os
-import jinja2
-import webapp2
-import string
 from handler import Handler
-
-
-# rot13_table = set(string.ascii_letters)
-# rot13_table_UC = [range(ord('A'),ord('Z'))]
-# rot13_table += rot13_table_UC
-
-# import string
-# s = set(string.ascii_lowercase)
-# s = set()
-#   s = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
 
 class Rot13Handler(Handler):
     def get(self):
