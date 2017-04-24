@@ -40,6 +40,8 @@ class UserSignupHandler(Handler):
             if not valid_email:
                 email_error = "Email address is invalid"
 
+            self.response.status_int = 400
+
             self.render('user_signup.html',
                         username=username,
                         password=password,
