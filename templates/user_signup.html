@@ -7,19 +7,19 @@
 <body>
 <form method="post" action="/signup">
     <label>Username:
-        <input type="text" name="username" value="{{ ctx.username }}">
+        <input type="text" name="username" value="{{ username }}">
         {{ username_error }}
     </label>
     <br>
 
     <label>Password:
-        <input type="password" name="password" value="{{ ctx.password }}">
+        <input type="password" name="password" value="{{ password }}">
         {{ password_error }}
     </label>
 
     <br>
     <label>Verify Password:
-        <input type="password" name="verify" value="{{ ctx.verify }}">
+        <input type="password" name="verify" value="{{ verify }}">
         {{ verify_error }}
     </label>
     <br>
