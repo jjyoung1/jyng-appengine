@@ -1,31 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Signup</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+    Signup
+{% endblock %}
+
+{% block content %}
 <form method="post" action="/signup">
     <label>Username:
         <input type="text" name="username" value="{{ username }}">
-        {{ username_error }}
+        <span class="error">{{ username_error }}</span>
     </label>
     <br>
 
     <label>Password:
         <input type="password" name="password" value="{{ password }}">
-        {{ password_error }}
+        <span class="error">{{ password_error }}</span>
     </label>
 
     <br>
     <label>Verify Password:
         <input type="password" name="verify" value="{{ verify }}">
-        {{ verify_error }}
+        <span class="error">{{ verify_error }}</span>
+    </label>
+
+    <br>
+    <label>Email:
+        <input type="email" name="email" value="{{ email }}">
+        <span class="error">{{ email_error }}</span>
     </label>
     <br>
     <br>
 
     <input type="submit" value="Signup">
 </form>
-</body>
-</html>
+{% endblock %}

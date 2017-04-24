@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rot13</title>
-</head>
+{% extends "base.html" %}
 
-<body>
-<h1>Enter some text to ROT13:</h1>
+{% block title %}
+Rot13
+{% endblock %}
+
+{% block content %}
+
 <form method="post">
-    <textarea name="text" rows="10" cols="50">{{ text }}</textarea>
-
+    <label>Enter some text to ROT13:
+        <textarea name="text" rows="10" cols="50">{{ text }}</textarea>
+    </label>
+    <br><br>
     <input type="submit">
 </form>
-</body>
-</html>
+
+{% endblock %}

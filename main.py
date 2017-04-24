@@ -14,18 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# import os
-# import jinja2
 import webapp2
 
-from handler import Handler
+
 from rot13 import Rot13Handler
-from user_signup import UserSignupHandler
+from user_signup import UserSignupHandler, WelcomeHandler
 from home import HomeHandler
 
 
 app = webapp2.WSGIApplication([
     ('/', HomeHandler),
     ('/rot13', Rot13Handler),
-    ('/signup', UserSignupHandler)
+    ('/signup', UserSignupHandler),
+    ('/welcome', WelcomeHandler)
 ], debug=True)
+
