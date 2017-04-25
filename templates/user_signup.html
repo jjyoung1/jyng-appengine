@@ -5,37 +5,36 @@ Signup
 {% endblock %}
 
 {% block content %}
-<form method="post" action="/signup">
+<form method="post" class="form-horizontal" action="/signup">
+
     <div class="form-group">
-        <label for="usr">Username:
+        <label class="control-label" for="usr">Username:
             <input type="text" class="form-control" name="username" value="{{ username }}" id="usr">
             <span class="error">{{ username_error }}</span>
         </label>
     </div>
 
     <div class="form-group">
-        <label for="pass">Password:
+        <label class="control-label" for="pass">Password:
             <input type="password" class="form-control" name="password" value="{{ password }}" id="pass">
             <span class="error">{{ password_error }}</span>
         </label>
     </div>
 
     <div class="form-group">
-        <label for="verify">Verify Password:
+        <label class="control-label" for="verify">Verify Password:
             <input type="password" class="form-control" name="verify" value="{{ verify }}" id="verify">
             <span class="error">{{ verify_error }}</span>
         </label>
     </div>
 
     <div class="form-group">
-        <label for="email">Email:
+        <label class="control-label" for="email">Email:
             <input type="email" class="form-control" name="email" value="{{ email }}" id="email">
             <span class="error">{{ email_error }}</span>
         </label>
     </div>
 
-    <br>
-
-    <button type="submit" class="btn btn-default">Signup</button>
+    <button class="btn btn-default" type="submit">Signup</button>
 </form>
 {% endblock %}
