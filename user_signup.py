@@ -10,6 +10,7 @@ class UserSignupHandler(Handler):
     def get(self):
         self.render('user_signup.html')
 
+    # TODO: Cleanup context passing to template
     def post(self):
         username = self.request.get("username")
         password = self.request.get("password")
