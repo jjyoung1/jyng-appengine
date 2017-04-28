@@ -17,15 +17,19 @@
 import webapp2
 
 
+from home import HomeHandler
 from rot13 import Rot13Handler
 from user_signup import UserSignupHandler, WelcomeHandler
-from home import HomeHandler
+from blog import BlogHandler
+from blog_post import BlogPostHandler
 
 
 app = webapp2.WSGIApplication([
     ('/', HomeHandler),
     ('/rot13', Rot13Handler),
     ('/signup', UserSignupHandler),
-    ('/welcome', WelcomeHandler)
+    ('/welcome', WelcomeHandler),
+    ('/blog', BlogHandler),
+    ('/blog/newpost', BlogPostHandler)
 ], debug=True)
 
