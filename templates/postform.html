@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Post Entry
+{% endblock %}
+
+{% block content %}
+    <form class="form-horizontal" action="/blog/newpost" method="post">
+        <div class="form-group">
+            <label for="subject">Subject
+                <input type="text" class="form-control" name="subject" id="subject" value="{{ subject }}">
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Post
+                <textarea class="form-control" name="content" rows="25" cols="60">{{ content }}</textarea>
+            </label>
+        </div>
+        <div class="error">{{ error }}</div>
+
+        <button type="submit" class="btn btn-default btn-lg">Submit</button>
+
+    </form>
+{% endblock %}

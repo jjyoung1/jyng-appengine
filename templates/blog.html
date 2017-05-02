@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Blog
+    Joel's Blog
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/blog.css">
 {% endblock %}
 
 {% block content %}
-Blog Front Page
+    <h1>Joel's Blog</h1>
+
+    {% for post in posts %}
+        <h2 class="post-subject">{{ post.subject }}</h2>
+        <div class="post-content">{{ post.content }}</div>
+        <div class="post-created">{{ post.created }}</div>
+    {% endfor %}
 {% endblock %}

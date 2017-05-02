@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}
-Post Entry
+    Joel's Blog
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/blog.css">
 {% endblock %}
 
 {% block content %}
-Enter new post
+    <h1>{{ post.subject }}</h1>
+    <p>{{ post.content }}</p>
 {% endblock %}
