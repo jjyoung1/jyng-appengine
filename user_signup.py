@@ -1,6 +1,41 @@
 import re
+import random
+import string
+import hashlib
 
 from handler import Handler
+
+
+def make_salt():
+    return ''.join(random.choice(string.letters) for x in range(0, 5))
+
+
+# Implement the function valid_pw() that returns True if a user's password
+# matches its hash. You will need to modify make_pw_hash.
+
+def make_pw_hash(name, pw, salt=''):
+    if not salt:
+        salt = make_salt()
+    h = hashlib.sha256(name + pw + salt).hexdigest()
+    return '%s|%s' % (h, salt)
+
+
+def valid_pw(name, pw, h):
+    salt = h.split(',')[1]
+    return h == make_pw_hash(name, pw, salt)
+
+
+def _make_user_cookie(name, salt):
+    c = hashlib.sha256(name + salt).hexdigest()
+    return '%s|%s|%s' % (name, c, salt)
+
+def _valid_user_cookie(pc):
+    (name,c,salt) = pc.split('|')
+    if pc == _make_user_cookie(name, salt):
+        return True
+    else:
+        return False
+
 
 
 class UserSignupHandler(Handler):
@@ -37,7 +72,11 @@ class UserSignupHandler(Handler):
 
         # Check if all inputs are valid
         if not error:
-            url = '/welcome?username=' + username
+            url = '/welcome'
+            salt = make_salt()
+            c = _make_user_cookie(username, salt)
+
+            self.response.headers.add_header('set-cookie', str('user=%s; Path=/' % c))
             self.redirect(url)
 
         else:
@@ -72,5 +111,13 @@ def _valid_email(self, email):
 
 class WelcomeHandler(Handler):
     def get(self):
-        username = self.request.get("username")
+        username = self.request.cookies.get("user")
+        (username,c,salt) = username.split('|')
         self.render('welcome.html', username=username)
+
+if __name__ == '__main__':
+    salt = make_salt()
+    print(salt)
+    c = _make_user_cookie('joel', salt)
+    print(c)
+    print("User cookie is " + str(_valid_user_cookie(c)))
