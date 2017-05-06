@@ -14,4 +14,8 @@ class PostHandler(Handler):
     def get(self, o_id):
         key = db.Key.from_path("BlogPost", int(o_id))
         post = db.get(key)
-        self.render("post.html", post=post)
+        if not post:
+            self.error(404)
+            return
+        else:
+            self.render("post.html", post=post)
