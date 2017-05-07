@@ -20,15 +20,16 @@ from blog.blog import BlogHandler, PostHandler
 from blog.blog_post import BlogPostHandler
 from home import HomeHandler
 from rot13 import Rot13Handler
-from user_signup import UserSignupHandler, WelcomeHandler
+from user_signup import UserSignupHandler, WelcomeHandler, UserLogoutHandler
 
 app = webapp2.WSGIApplication([
     (r'/', HomeHandler),
     (r'/rot13', Rot13Handler),
-    (r'/signup', UserSignupHandler),
-    (r'/welcome', WelcomeHandler),
+    (r'/blog/welcome', WelcomeHandler),
     (r'/blog', BlogHandler),
-    webapp2.Route(r'/blog/<o_id:\d+>', PostHandler),
-    (r'/blog/newpost', BlogPostHandler)
+    (r'/blog/signup', UserSignupHandler),
+    (r'/blog/logout', UserLogoutHandler),
+    (r'/blog/newpost', BlogPostHandler),
+    webapp2.Route(r'/blog/<o_id:\d+>', PostHandler)
 ], debug=True)
 

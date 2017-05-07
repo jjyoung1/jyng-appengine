@@ -29,13 +29,13 @@ def _make_user_cookie(name, salt):
     c = hashlib.sha256(name + salt).hexdigest()
     return '%s|%s|%s' % (name, c, salt)
 
+
 def _valid_user_cookie(pc):
-    (name,c,salt) = pc.split('|')
+    (name, c, salt) = pc.split('|')
     if pc == _make_user_cookie(name, salt):
         return True
     else:
         return False
-
 
 
 class UserSignupHandler(Handler):
@@ -72,7 +72,7 @@ class UserSignupHandler(Handler):
 
         # Check if all inputs are valid
         if not error:
-            url = '/welcome'
+            url = '/blog/welcome'
             salt = make_salt()
             c = _make_user_cookie(username, salt)
 
@@ -112,8 +112,9 @@ def _valid_email(self, email):
 class WelcomeHandler(Handler):
     def get(self):
         username = self.request.cookies.get("user")
-        (username,c,salt) = username.split('|')
+        (username, c, salt) = username.split('|')
         self.render('welcome.html', username=username)
+
 
 if __name__ == '__main__':
     salt = make_salt()
@@ -121,3 +122,15 @@ if __name__ == '__main__':
     c = _make_user_cookie('joel', salt)
     print(c)
     print("User cookie is " + str(_valid_user_cookie(c)))
+
+
+class UserLogoutHandler(Handler):
+    def _logout(self):
+        self.response.delete_cookie('user', path='/')
+        self.redirect('/blog/signup')
+
+    def get(self):
+        self._logout()
+
+    def post(self):
+        self._logout()
